@@ -1,32 +1,12 @@
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
+import Sidebar from "./Sidebar";
+const { Header, Content } = Layout;
 import { Outlet } from "react-router-dom";
-const { Header, Content, Footer, Sider } = Layout;
-import { adminPaths } from "../../routes/admin.routes";
-import { sidebarItemsGenerators } from "../../utils/SidebarItemsGenerator";
 
 const MainLayout = () => {
 	return (
 		<Layout className="h-screen">
-			<Sider
-				breakpoint="lg"
-				collapsedWidth="0"
-				onBreakpoint={(broken) => {
-					console.log(broken);
-				}}
-				onCollapse={(collapsed, type) => {
-					console.log(collapsed, type);
-				}}
-			>
-				<div className="text-white h-14 flex justify-center items-center">
-					<h1 className="text-2xl">PH University</h1>
-				</div>
-				<Menu
-					theme="dark"
-					mode="inline"
-					defaultSelectedKeys={["4"]}
-					items={sidebarItemsGenerators(adminPaths, "admin")}
-				/>
-			</Sider>
+			<Sidebar />
 			<Layout>
 				<Header className="p-0" />
 				<Content className="mt-6 mb-0 mx-4">
@@ -34,9 +14,6 @@ const MainLayout = () => {
 						<Outlet />
 					</div>
 				</Content>
-				<Footer style={{ textAlign: "center" }}>
-					PH University ©{new Date().getFullYear()} Created by Shariful Islam.
-				</Footer>
 			</Layout>
 		</Layout>
 	);

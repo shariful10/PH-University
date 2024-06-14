@@ -3,8 +3,8 @@ import FacultyDashboard from "../pages/faculty/FacultyDashboard";
 
 export const facultyPaths = [
 	{
-		name: "Faculty Dashboard",
-		path: "faculty-dashboard",
+		name: "Dashboard",
+		path: "dashboard",
 		element: <FacultyDashboard />,
 	},
 	{
