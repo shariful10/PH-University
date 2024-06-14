@@ -1,31 +1,8 @@
-import { Layout, Menu, MenuProps } from "antd";
+import { Layout, Menu } from "antd";
+import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
-import { NavLink, Outlet } from "react-router-dom";
-
-const items: MenuProps["items"] = [
-	{
-		key: "Dashboard",
-		label: <NavLink to="/admin">Dashboard</NavLink>,
-	},
-	{
-		key: "User Management",
-		label: "User Management",
-		children: [
-			{
-				key: "Create Admin",
-				label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
-			},
-			{
-				key: "Create Faculty",
-				label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
-			},
-			{
-				key: "Create Student",
-				label: <NavLink to="/admin/create-student">Create Student</NavLink>,
-			},
-		],
-	},
-];
+import { adminPaths } from "../../routes/admin.routes";
+import { sidebarItemsGenerators } from "../../utils/SidebarItemsGenerator";
 
 const MainLayout = () => {
 	return (
@@ -47,13 +24,13 @@ const MainLayout = () => {
 					theme="dark"
 					mode="inline"
 					defaultSelectedKeys={["4"]}
-					items={items}
+					items={sidebarItemsGenerators(adminPaths, "admin")}
 				/>
 			</Sider>
 			<Layout>
-				<Header style={{ padding: 0 }} />
-				<Content style={{ margin: "24px 16px 0" }}>
-					<div style={{ padding: 24, minHeight: 360 }}>
+				<Header className="p-0" />
+				<Content className="mt-6 mb-0 mx-4">
+					<div className="p-6 min-h-[360px]">
 						<Outlet />
 					</div>
 				</Content>

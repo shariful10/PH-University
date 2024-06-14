@@ -1,8 +1,9 @@
 import App from "../App";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import { adminRoutes } from "./admin.routes";
+import { adminPaths } from "./admin.routes";
 import { createBrowserRouter } from "react-router-dom";
+import { routeGenerator } from "../utils/routeGenerator";
 
 const router = createBrowserRouter([
 	{
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
 	{
 		path: "/admin",
 		element: <App />,
-		children: adminRoutes,
+		children: routeGenerator(adminPaths),
 	},
 	// {
 	// 	path: "/faculty",
